@@ -1,4 +1,8 @@
+import { useLoaderData } from "react-router-dom";
+
 export default function Comments() {
+  const comments = useLoaderData();
+
   return (
     <section>
       <h3>Comments</h3>
@@ -17,10 +21,14 @@ export default function Comments() {
       </form>
       <article>
         <ul>
-          <li>
-            <p>Commented user</p>
-            <p>Comment</p>
-          </li>
+          {comments.map((comment) => {
+            return (
+              <li key={comment._id}>
+                <p>{comment.commentedUser}</p>
+                <p>{comment.text}</p>
+              </li>
+            );
+          })}
         </ul>
       </article>
     </section>
