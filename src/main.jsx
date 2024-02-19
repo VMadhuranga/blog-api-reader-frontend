@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import Posts from "./components/posts/Posts.jsx";
 import ErrorPage from "./components/error-page/ErrorPage.jsx";
 import Post from "./components/post/Post.jsx";
+import postsLoader from "./loaders/posts-loader.js";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Posts />,
+        loader: postsLoader,
       },
       {
         path: ":post_id",
