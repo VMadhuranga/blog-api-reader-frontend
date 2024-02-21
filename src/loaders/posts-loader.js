@@ -1,17 +1,12 @@
+import axios from "axios";
+
 export default async function postsLoader() {
   try {
-    const response = await fetch("http://localhost:3000/posts", {
-      mode: "cors",
-    });
+    const response = await axios.get("http://localhost:3000/posts");
 
-    if (!response.ok) {
-      throw new Error("Network response was not OK");
-    }
-
-    const posts = await response.json();
-
-    return posts;
+    return response.data;
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
+    throw new Error(error.message);
   }
 }

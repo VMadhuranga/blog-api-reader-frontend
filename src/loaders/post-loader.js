@@ -1,20 +1,14 @@
+import axios from "axios";
+
 export default async function postLoader(params) {
   try {
-    const response = await fetch(
+    const response = await axios.get(
       `http://localhost:3000/posts/${params.post_id}`,
-      {
-        mode: "cors",
-      },
     );
 
-    if (!response.ok) {
-      throw new Error("Network response was not OK");
-    }
-
-    const post = await response.json();
-
-    return post;
+    return response.data;
   } catch (error) {
-    console.error(error);
+    console.error(error.response.statusText);
+    throw new Error(error.response.statusText);
   }
 }
