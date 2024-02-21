@@ -23,34 +23,39 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
-        element: <Posts />,
-        loader: postsLoader,
-      },
-      {
-        path: ":post_id",
-        element: <Post />,
-        loader: ({ params }) => {
-          return postLoader(params);
-        },
+        errorElement: <ErrorPage />,
         children: [
           {
             index: true,
-            element: <Comments />,
+            element: <Posts />,
+            loader: postsLoader,
+          },
+          {
+            path: ":post_id",
+            element: <Post />,
             loader: ({ params }) => {
-              return commentsLoader(params);
+              return postLoader(params);
             },
-            action: async ({ params, request }) => {
-              const formData = await request.formData();
-              const formDataObj = Object.fromEntries(formData);
+            children: [
+              {
+                index: true,
+                element: <Comments />,
+                loader: ({ params }) => {
+                  return commentsLoader(params);
+                },
+                action: async ({ params, request }) => {
+                  const formData = await request.formData();
+                  const formDataObj = Object.fromEntries(formData);
 
-              const error = await createCommentAction(params, formDataObj);
-              if (error) {
-                return error;
-              }
+                  const error = await createCommentAction(params, formDataObj);
+                  if (error) {
+                    return error;
+                  }
 
-              return redirect(`/posts/${params.post_id}`);
-            },
+                  return redirect(`/posts/${params.post_id}`);
+                },
+              },
+            ],
           },
         ],
       },
