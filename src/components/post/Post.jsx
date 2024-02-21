@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Link, Outlet, useLoaderData } from "react-router-dom";
 
 export default function Post() {
   const post = useLoaderData();
@@ -9,6 +9,9 @@ export default function Post() {
         <h2>{post.title}</h2>
         <p>{new Date(post.createdDate).toLocaleDateString()}</p>
         <article>{post.content}</article>
+        <p>
+          See more <Link to={"/posts"}>posts</Link>
+        </p>
       </section>
       <Outlet />
     </>
