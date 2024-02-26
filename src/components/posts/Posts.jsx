@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
+import unescape from "../../utils/unescape";
 
 export default function Posts() {
   const posts = useLoaderData();
@@ -12,7 +13,7 @@ export default function Posts() {
             {posts.map((post) => {
               return (
                 <li key={post._id}>
-                  <Link to={`${post._id}`}>{post.title}</Link>
+                  <Link to={`${post._id}`}>{unescape(post.title)}</Link>
                   <span>{new Date(post.createdDate).toLocaleDateString()}</span>
                 </li>
               );
