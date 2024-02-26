@@ -10,5 +10,12 @@ header {
 
 header h1 {
   font-size: 2rem;
-  color: white;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 10px;
 }
