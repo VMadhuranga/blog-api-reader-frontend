@@ -8,7 +8,6 @@ export default async function commentsLoader(params) {
 
     return response.data;
   } catch (error) {
-    console.error(error.response.statusText);
     throw new Error(error.response.statusText);
   }
 }

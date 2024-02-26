@@ -6,7 +6,6 @@ export default async function postsLoader() {
 
     return response.data;
   } catch (error) {
-    console.error(error.message);
     throw new Error(error.message);
   }
 }

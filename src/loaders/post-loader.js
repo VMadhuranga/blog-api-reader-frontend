@@ -8,7 +8,6 @@ export default async function postLoader(params) {
 
     return response.data;
   } catch (error) {
-    console.error(error.response.statusText);
     throw new Error(error.response.statusText);
   }
 }

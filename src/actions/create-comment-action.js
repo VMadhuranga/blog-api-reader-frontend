@@ -7,7 +7,6 @@ export default async function createCommentAction(params, formData) {
       formData,
     );
   } catch (error) {
-    console.error(error.response.statusText);
     return error.response.data;
   }
 }
