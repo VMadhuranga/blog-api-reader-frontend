@@ -19,6 +19,8 @@ body {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+  background-color: #18122b;
+  color: white;
 }
 
 #root {
