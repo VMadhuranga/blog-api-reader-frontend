@@ -1,0 +1,14 @@
+* {
+  outline: 1px solid red;
+}
+
+header {
+  padding: 10px;
+  text-align: center;
+  background-color: #635985;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: white;
+}
