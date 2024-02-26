@@ -19,3 +19,10 @@ main {
   margin: 0 auto;
   padding: 10px;
 }
+
+footer {
+  padding: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  background-color: #635985;
+}
