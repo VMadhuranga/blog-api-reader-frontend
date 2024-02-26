@@ -47,9 +47,10 @@ const router = createBrowserRouter([
                   const formData = await request.formData();
                   const formDataObj = Object.fromEntries(formData);
 
-                  const error = await createCommentAction(params, formDataObj);
-                  if (error) {
-                    return error;
+                  const errors = await createCommentAction(params, formDataObj);
+
+                  if (errors) {
+                    return errors;
                   }
 
                   return redirect(`/posts/${params.post_id}`);
