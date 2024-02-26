@@ -7,12 +7,12 @@ export default function Posts() {
     <section>
       <h2>Posts</h2>
       <article>
-        {posts.length ? (
+        {posts.length > 0 ? (
           <ul>
             {posts.map((post) => {
               return (
                 <li key={post._id}>
-                  <Link to={`/posts/${post._id}`}>{post.title}</Link>
+                  <Link to={`${post._id}`}>{post.title}</Link>
                   <span>{new Date(post.createdDate).toLocaleDateString()}</span>
                 </li>
               );
