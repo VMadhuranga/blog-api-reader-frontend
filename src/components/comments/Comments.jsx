@@ -2,7 +2,7 @@ import { Form, useActionData, useLoaderData } from "react-router-dom";
 
 export default function Comments() {
   const comments = useLoaderData();
-  const error = useActionData();
+  const errors = useActionData();
 
   return (
     <section>
@@ -11,11 +11,10 @@ export default function Comments() {
         <div>
           <label htmlFor="user_name">Name :</label>
           <input type="text" name="user_name" id="user_name" required />
-          {error && (
-            <span>
-              {error.data.find((data) => data.path === "user_name").msg}
-            </span>
-          )}
+          {errors &&
+            errors.data
+              .filter((error) => error.path === "user_name")
+              .map((error, index) => <span key={index}>{error.msg}</span>)}
         </div>
         <div>
           <label htmlFor="comment">Comment :</label>
@@ -26,27 +25,30 @@ export default function Comments() {
             rows="10"
             required
           ></textarea>
-          {error && (
-            <span>
-              {error.data.find((data) => data.path === "comment").msg}
-            </span>
-          )}
+          {errors &&
+            errors.data
+              .filter((error) => error.path === "comment")
+              .map((error, index) => <span key={index}>{error.msg}</span>)}
         </div>
         <div>
           <button type="submit">Submit</button>
         </div>
       </Form>
       <article>
-        <ul>
-          {comments.map((comment) => {
-            return (
-              <li key={comment._id}>
-                <p>{comment.commentedUser}</p>
-                <p>{comment.text}</p>
-              </li>
-            );
-          })}
-        </ul>
+        {comments.length > 0 ? (
+          <ul>
+            {comments.map((comment) => {
+              return (
+                <li key={comment._id}>
+                  <p>{comment.commentedUser}</p>
+                  <p>{comment.text}</p>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p>There are no comments yet</p>
+        )}
       </article>
     </section>
   );
