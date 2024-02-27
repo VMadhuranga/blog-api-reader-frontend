@@ -1,17 +1,22 @@
 import { Link, Outlet, useLoaderData } from "react-router-dom";
 import Markdown from "react-markdown";
 import unescape from "../../utils/unescape";
+import styles from "./Post.module.css";
 
 export default function Post() {
   const post = useLoaderData();
 
   return (
     <>
-      <section>
+      <section className={styles.postComponent}>
         <h2>{unescape(post.title)}</h2>
-        <p>{new Date(post.createdDate).toLocaleDateString()}</p>
+        <span className={styles.createdDate}>
+          {new Date(post.createdDate).toDateString()}
+        </span>
         <article>
-          <Markdown skipHtml>{post.content}</Markdown>
+          <Markdown skipHtml className={styles.postContent}>
+            {post.content}
+          </Markdown>
         </article>
         <p>
           See more <Link to={"/posts"}>posts</Link>
