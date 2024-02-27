@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Posts from "./components/posts/Posts.jsx";
 import ErrorPage from "./components/error-page/ErrorPage.jsx";
@@ -53,7 +49,7 @@ const router = createBrowserRouter([
                     return errors;
                   }
 
-                  return redirect(`/posts/${params.post_id}`);
+                  return null;
                 },
               },
             ],
