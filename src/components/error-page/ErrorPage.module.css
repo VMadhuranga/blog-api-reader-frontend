@@ -4,11 +4,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  font-size: 1.2rem;
-}
-
-.errorPage h2 {
-  font-size: 1.8rem;
 }
 
 .errorPage a {

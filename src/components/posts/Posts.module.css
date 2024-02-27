@@ -19,9 +19,7 @@
 }
 
 .postsList a {
-  font-size: 1.2rem;
   color: inherit;
-  text-decoration: none;
 
   &:hover {
     color: deepskyblue;
@@ -33,6 +31,5 @@
 }
 
 .noPostMsg {
-  font-size: 1.2rem;
   text-align: center;
 }
