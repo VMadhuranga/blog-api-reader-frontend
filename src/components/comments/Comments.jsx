@@ -1,14 +1,15 @@
 import { Form, useActionData, useLoaderData } from "react-router-dom";
 import unescape from "../../utils/unescape";
+import styles from "./Comments.module.css";
 
 export default function Comments() {
   const comments = useLoaderData();
   const errors = useActionData();
 
   return (
-    <section>
+    <section className={styles.commentSection}>
       <h3>Comments</h3>
-      <Form method="post">
+      <Form method="post" className={styles.createCommentForm}>
         <div>
           <label htmlFor="user_name">Name :</label>
           <input type="text" name="user_name" id="user_name" required />
@@ -37,11 +38,11 @@ export default function Comments() {
       </Form>
       <article>
         {comments.length > 0 ? (
-          <ul>
+          <ul className={styles.commentList}>
             {comments.map((comment) => {
               return (
                 <li key={comment._id}>
-                  <p>{unescape(comment.commentedUser)}</p>
+                  <p>{unescape(comment.commentedUser)} :</p>
                   <p>{unescape(comment.text)}</p>
                 </li>
               );
