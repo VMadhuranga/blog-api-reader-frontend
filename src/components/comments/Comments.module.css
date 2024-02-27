@@ -41,6 +41,7 @@
   width: 100%;
   height: 200px;
   resize: none;
+  font-family: inherit;
 }
 
 .createCommentForm button {
@@ -68,6 +69,9 @@
 
 .commentList li {
   word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .commentList li > :first-child {
