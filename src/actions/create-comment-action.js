@@ -1,11 +1,8 @@
 import axios from "axios";
 
-export default async function createCommentAction(params, formData) {
+export default async function createCommentAction(baseUrl, params, formData) {
   try {
-    await axios.post(
-      `http://localhost:3000/posts/${params.post_id}/comments`,
-      formData,
-    );
+    await axios.post(`${baseUrl}/posts/${params.post_id}/comments`, formData);
   } catch (error) {
     return error.response.data;
   }

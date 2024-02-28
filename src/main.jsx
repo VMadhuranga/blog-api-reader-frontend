@@ -12,6 +12,7 @@ import commentsLoader from "./loaders/comments-loader.js";
 import createCommentAction from "./actions/create-comment-action.js";
 import "./index.css";
 
+const baseUrl = "https://blog-api-backend.adaptable.app";
 const router = createBrowserRouter([
   {
     path: "/posts",
@@ -24,26 +25,30 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Posts />,
-            loader: postsLoader,
+            loader: () => postsLoader(baseUrl),
           },
           {
             path: ":post_id",
             element: <Post />,
             loader: ({ params }) => {
-              return postLoader(params);
+              return postLoader(baseUrl, params);
             },
             children: [
               {
                 index: true,
                 element: <Comments />,
                 loader: ({ params }) => {
-                  return commentsLoader(params);
+                  return commentsLoader(baseUrl, params);
                 },
                 action: async ({ params, request }) => {
                   const formData = await request.formData();
                   const formDataObj = Object.fromEntries(formData);
 
-                  const errors = await createCommentAction(params, formDataObj);
+                  const errors = await createCommentAction(
+                    baseUrl,
+                    params,
+                    formDataObj,
+                  );
 
                   if (errors) {
                     return errors;

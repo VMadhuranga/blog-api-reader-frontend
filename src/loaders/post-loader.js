@@ -1,10 +1,8 @@
 import axios from "axios";
 
-export default async function postLoader(params) {
+export default async function postLoader(baseUrl, params) {
   try {
-    const response = await axios.get(
-      `http://localhost:3000/posts/${params.post_id}`,
-    );
+    const response = await axios.get(`${baseUrl}/posts/${params.post_id}`);
 
     return response.data;
   } catch (error) {
