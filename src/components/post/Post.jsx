@@ -15,7 +15,7 @@ export default function Post() {
         </span>
         <article>
           <Markdown skipHtml className={styles.postContent}>
-            {post.content}
+            {unescape(post.content)}
           </Markdown>
         </article>
         <p>
