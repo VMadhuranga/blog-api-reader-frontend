@@ -71,7 +71,7 @@ export default function Comments() {
             })}
           </ul>
         ) : (
-          <p>There are no comments yet</p>
+          <p className={styles.noCommentsMsg}>There are no comments yet</p>
         )}
       </article>
     </section>
