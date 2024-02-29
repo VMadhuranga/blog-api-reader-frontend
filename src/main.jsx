@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+  useLocation,
+} from "react-router-dom";
 import App from "./App.jsx";
 import Posts from "./components/posts/Posts.jsx";
 import ErrorPage from "./components/error-page/ErrorPage.jsx";
@@ -14,6 +19,10 @@ import "./index.css";
 
 const baseUrl = "https://blog-api-backend.adaptable.app";
 const router = createBrowserRouter([
+  {
+    path: "/",
+    loader: () => redirect("/posts"),
+  },
   {
     path: "/posts",
     element: <App />,
