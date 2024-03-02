@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   redirect,
   RouterProvider,
-  useLocation,
 } from "react-router-dom";
 import App from "./App.jsx";
 import Posts from "./components/posts/Posts.jsx";
